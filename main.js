@@ -1,15 +1,24 @@
-var x = function(){
-    this.val = 1;
-    setTimeout(() => {
-        this.val++;
-        console.log(this.val);
-    }, 1)
-};
+class Student {
+    constructor(name, age, marks){
+        this.name = name;
+        this.age = age;
+        this.marks = marks;
+    }
 
-var xx = new x();
-
-var x1 = (...n) => {
-    console.log(n[0]);
+    setPlacementAge(minPlacementAge){
+        return (minMarks) => {
+            if (this.marks > minMarks && this.age > minPlacementAge) {
+                console.log(this.name + " is ready for placement");
+            } else {
+                console.log(this.name + " is not ready for placement");
+            }
+        }
+    }
 }
 
-x1(1, 2, 3);
+
+const yash = new Student('yash', 25, 75);
+const vaibhav = new Student('vaibhav', 13, 35);
+
+yash.setPlacementAge(18)(40);
+vaibhav.setPlacementAge(13)(40);
